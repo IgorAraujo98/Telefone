@@ -1,72 +1,53 @@
-Algoritmo "Telefone"
+Algoritmo "Contas telefônicas"
 
-
-
+//Declaração das variáveis
 Var
-
-     N, i, j, M, tipoCliente  : inteiro
-     telefone, minutos : vetor [0..9] de real
-     nome : vetor [0..9] de caractere
-     mat, tipoo : vetor [0..4, 0..3] de real
-     vet: vetor [0..9] de real
+      clientes : vetor [1..50] de real
+      nome : vetor [1..50] de caractere
+      telefone : vetor [1..50] de real
+      tipoo : vetor [1..50] de real
+      minutos : vetor [1..50] de real
+      valorConta : real
+      tiposAssinatura : vetor [0..2, 0..1] de real
+      qtdClientes, i, j, M, N : inteiro
 
 Inicio
+//Leitura dos dados dos clientes
+   Escreva("Informe a quantidade de clientes: ")
+   Leia(qtdClientes)
 
-      escreva("Informe a quantidade de clientes: ")
-      leia(N)
-      
-      para i de 0 ate N-1 faca
+   Para i de 0 ate qtdClientes-1 faca
+      Escreval("Dados do ", i+1, " cliente:")
+      Escreva("Nome: ")
+      leia(nome[i])
+      Escreva("Telefone: ")
+      Leia(telefone[i])
+      Escreva("Tipo: ")
+      Leia(tipoo[i])
+      Escreva("Minutos: ")
+      Leia(minutos[i])
+   FimPara
+   escreval
+//Leitura dos dados dos tipos de assinatura
+   Escreval("Informe o preco basico e excedente de cada tipo de conta: ")
+   Para i de 0 ate N-1 faca
+      para j de 0 ate M-1 faca
+         Escreval("Tipo ", i+1, ":")
+         Leia(tiposAssinatura[i, j])
+         Leia(tiposAssinatura[i, j])
+   FimPara
+fimpara
 
-         escreval("Dados do ", i+1, "cliente: ")
-         escreval("Nome: ")
-         leia(nome[i])
-         escreval("telefone: ")
-         leia(telefone[i])
-         escreval("Tipo: ")
-             // linhas
-             N <- 3
-             //colunas
-             M <- 2
-             para i de 0 ate N-1 faca
-                 escreval("Tipo de assintatura", i+1, " : ")
-             para j de 0 ate M-1 faca
-                 leia(mat[i, j])
-             fimpara
-             
-           fimpara
-         escreval("minutos: ")
-         leia(minutos[i])
-     fimpara
+//Cálculo da conta de cada cliente e impressão do relatório
+   Escreval("RELATORIO DE CLIENTES: ")
+   Para i de 0 ate qtdClientes-1 faca
+      Se minutos[i] <= 90 Entao
+         valorConta <- tiposAssinatura[i, j]
+      Senao
+         valorConta <- tiposAssinatura[i, j] + (minutos[i] * tiposAssinatura[i, 1])
+      Fimse
 
-      escreval
-
-      se minutos[i] <= 90 entao
-       
-      escreval("Preço da conta ")
-      
-      para i de 0 ate N- 1 faca
-         escreval(vet[i]:3:1)
-         senao
-         
-         para i de 0 ate N-1 faca
-           vet[i] <- 0
-         para j de 0 ate M-1 faca
-           vet[i] <- vet[i] + mat[i, j]
-         fimpara
-      fimpara
-      
-         fimse
-      fimpara
-      
-      escreval("Relatório de cliente ")
-      para i de 0 ate N-1 faca
-         para j de 0 ate M-1 faca
-          escreval(nome[i])
-          escreval(telefone[i])
-          escreval(mat[i, j])
-          escreval(minutos[i])
-          fimpara
-      fimpara
-
+      Escreva(nome[i], ", ", telefone[i], ", Tipo ", tipoo[i], ", Minutos: ", minutos[i], ", Conta = R$ ", valorConta, "\n")
+   FimPara
 
 Fimalgoritmo
